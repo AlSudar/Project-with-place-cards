@@ -1,0 +1,60 @@
+s
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="pages/index.css">
+</head>
+
+<body>
+
+
+    <div class="root">
+
+        <header class="header root__section">
+            <img src="./images/logo.svg" alt="mesto logo" class="logo">
+        </header>
+        <div class="profile root__section">
+            <div class="user-info">
+                <div class="user-info__photo"></div>
+                <div class="user-info__data">
+                    <h1 class="user-info__name"></h1>
+                    <p class="user-info__job"></p>
+                    <button class="user-info__edit">Edit</button>
+                </div>
+                <button class="button user-info__button">+</button>
+            </div>
+        </div>
+        <div class="places-list root__section">
+
+        </div>
+        <div class="popup">
+            <div class="popup__content">
+                <form class="popup__form" name="new" novalidate>
+                    <h3 class="popup__title">Редактирование профиля</h3>
+                </form>
+            </div>
+        </div>
+        <div class="popup__card popup">
+            <div class="popup__content-card popup__content">
+                <form class="popup__form-card popup__form" name="new">
+                    <h3 class="popup__title">Новое место</h3>
+                </form>
+            </div>
+        </div>
+        <div class="popup__image popup">
+
+        </div>
+    </div>
+    <script src="javascript/initialCards.js"></script>
+    <script src="javascript/cards.js"></script>
+    <script src="javascript/popupProfile.js"></script>
+    <script src="javascript/popupCard.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+.user-info__edit {
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  margin-top: 24px;
+  width: 38px;
+  height: 18px;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 15px;
+  align-items: center;
+  text-align: center;
+}
+.user-info__edit:focus {
+background-color: #ffffff;
+color: black;
+}
