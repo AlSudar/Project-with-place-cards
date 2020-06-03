@@ -1,0 +1,316 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Inter-Regular.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  src: url(../fonts/Inter-Black.woff2) format("woff2");
+}
+body {
+  background-color: #000;
+}
+body .root {
+  background-color: black;
+  min-height: 100vh;
+  font-family: "Inter";
+  padding-bottom: 194px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @import url("./__button_is-active/popup__button_is-active.css");
+}
+body .root .header {
+  min-height: 132px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #A5A5A5;
+}
+body .root .root__section {
+  width: calc(100% - 400px);
+  margin: auto;
+}
+body .root .profile {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+}
+body .root .logo {
+  width: 148px;
+}
+body .root .user-info {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  color: white;
+  width: 100%;
+}
+body .root .user-info .user-info__photo {
+  width: 150px;
+  height: 150px;
+  min-width: 150px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/avatar.jpg);
+}
+body .root .user-info .user-info__data {
+  max-width: 364px;
+  margin-left: 36px;
+}
+body .root .user-info .user-info__edit {
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  margin-top: 24px;
+  width: 38px;
+  height: 18px;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 15px;
+  align-items: center;
+  text-align: center;
+  outline: none;
+}
+body .root .user-info .user-info__edit:focus {
+  background-color: #ffffff;
+  color: black;
+}
+body .root .user-info .user-info__job {
+  margin: 20px 0 0 0;
+  font-size: 20px;
+  line-height: 25px;
+}
+body .root .user-info .user-info__button {
+  position: absolute;
+  top: 16px;
+  right: 0;
+  outline: none;
+}
+body .root .user-info .user-info__edit {
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  margin-top: 24px;
+  width: 38px;
+  height: 18px;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 15px;
+  align-items: center;
+  text-align: center;
+}
+body .root .user-info .user-info__edit:focus {
+  background-color: #ffffff;
+  color: black;
+}
+body .root .button {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  width: 150px;
+  height: 50px;
+  font-size: 30px;
+  display: block;
+  cursor: pointer;
+}
+body .root .button:focus {
+  outline-color: greenyellow;
+}
+body .root .places-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 282px);
+  grid-gap: 18px 18px;
+  justify-content: center;
+}
+body .root .places-list .place-card {
+  position: relative;
+  width: 282px;
+  background-color: #fff;
+  border-radius: 10px;
+  min-height: 360px;
+}
+body .root .places-list .place-card__image {
+  height: 282px;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+}
+body .root .places-list .place-card__image::after {
+  content: "";
+  display: block;
+  width: 282px;
+  height: 282px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+body .root .places-list .place-card__delete-icon {
+  background: url(../images/trash-icon.svg) center no-repeat;
+  background-color: transparent;
+  border: none;
+  width: 18px;
+  height: 20px;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  cursor: pointer;
+  display: none;
+}
+body .root .places-list .place-card:hover .place-card__delete-icon {
+  display: block;
+}
+body .root .places-list .place-card__description {
+  display: flex;
+  min-height: 78px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 22px;
+}
+body .root .places-list .place-card__name {
+  margin: 0;
+  font-size: 24px;
+  line-height: 29px;
+}
+body .root .places-list .place-card__like-icon {
+  background: url(../images/like-inactive.svg) center no-repeat;
+  background-color: transparent;
+  border: none;
+  width: 21px;
+  height: 19px;
+  cursor: pointer;
+  transition: transform 0.3s linear;
+  outline: none;
+}
+body .root .places-list .place-card__like-icon_liked {
+  background-image: url(../images/like-active.svg);
+}
+body .root .places-list .place-card__like-icon:hover {
+  transform: scale(1.03);
+}
+body .root .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+body .root .popup .popup__content {
+  width: 430px;
+  min-height: 330px;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 34px 36px;
+}
+body .root .popup .popup__content .popup__content_error {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+}
+body .root .popup .popup__content .popup__close {
+  width: 26px;
+  position: absolute;
+  top: -26px;
+  right: -26px;
+  cursor: pointer;
+}
+body .root .popup .popup__content .popup__title {
+  margin: 0;
+  margin-bottom: 54px;
+  font-size: 24px;
+  line-height: 30px;
+}
+body .root .popup .popup__content .popup__form {
+  margin: 0;
+}
+body .root .popup .popup__content .popup__input {
+  width: 100%;
+  height: 47px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  line-height: 17px;
+  box-sizing: border-box;
+  padding: 12px 6px 13px;
+  margin-bottom: 12px;
+}
+body .root .popup .popup__content .popup__button {
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  margin-top: 48px;
+  color: rgba(0, 0, 0, 0.2);
+  background: white;
+}
+body .root .popup .popup__content .popup.popup_is-opened {
+  display: flex;
+}
+body .root .popup .popup__content .popup__image-opened {
+  position: fixed;
+  background-repeat: no-repeat;
+  background-position: center, center;
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+}
+
+@media screen and (max-width: 540px) {
+  .popup__content {
+    width: calc(100% - 60px);
+  }
+}
+@media screen and (max-width: 980px) {
+  .user-info__button {
+    position: static;
+    margin-bottom: 40px;
+  }
+}
+@media screen and (max-width: 980px) {
+  .user-info__data {
+    margin: 20px 0;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 980px) {
+  .user-info__photo {
+    margin-top: 40px;
+  }
+}
+@media screen and (max-width: 980px) {
+  .user-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 980px) {
+  .root__section {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .root {
+    padding-bottom: 140px;
+  }
+}
