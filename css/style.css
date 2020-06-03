@@ -194,9 +194,6 @@ body .root .places-list .place-card__like-icon_liked {
 body .root .places-list .place-card__like-icon:hover {
   transform: scale(1.03);
 }
-body .root .popup_is-opened {
-  display: flex !important;
-}
 body .root .popup {
   position: fixed;
   top: 0;
@@ -289,6 +286,10 @@ body .root .popup .popup__content .popup__form .popup__button {
   margin-top: 48px;
   color: rgba(0, 0, 0, 0.2) !important;
   background: white !important;
+}
+
+.popup_is-opened {
+  display: flex !important;
 }
 
 @media screen and (max-width: 540px) {

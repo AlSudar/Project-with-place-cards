@@ -194,9 +194,6 @@
                     transform: scale(1.03);
                 }
             }
-            .popup_is-opened {
-                display: flex !important;
-            }
             .popup {
                 position: fixed;
                 top: 0;
@@ -291,6 +288,10 @@
                 }
             }
         }
+    }
+    
+    .popup_is-opened {
+        display: flex !important;
     }
     
     @media screen and (max-width: 540px) {
