@@ -235,6 +235,13 @@ body .root .popup .popup__content {
   box-sizing: border-box;
   padding: 34px 36px;
 }
+body .root .popup .popup__content .popup__close {
+  width: 26px;
+  position: absolute;
+  top: -26px;
+  right: -26px;
+  cursor: pointer;
+}
 body .root .popup .popup__content .popup__form {
   margin: 0;
 }

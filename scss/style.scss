@@ -233,6 +233,13 @@
                     position: relative;
                     box-sizing: border-box;
                     padding: 34px 36px;
+                    .popup__close {
+                        width: 26px;
+                        position: absolute;
+                        top: -26px;
+                        right: -26px;
+                        cursor: pointer;
+                    }
                     .popup__form {
                         margin: 0;
                         .popup__content_error {
