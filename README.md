@@ -15,4 +15,4 @@ Change the name of the author and his occupation.
 
 There is a validation method
 
-GitHub Pages: https://alexandrsudarev.github.io/Project-with-place-cards/
+GitHub Pages: https://alsudar.github.io/Project-with-place-cards/
