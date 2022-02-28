@@ -1,18 +1,7 @@
-Страница с карточками мест свёрстанная при помощи HTML5, SCSS и JavaScript
-
-На странице можно добавлять новые карточки, лайкать их удалять, по клику увеличивать их изображение.
-
-Изменять имя автора и род его деятельности.
-
-Присутствует метод валидации 
-
-
-Place card page collapsed using HTML5, SCSS and JavaScript
-
-On the page you can add new cards, like delete them, click to enlarge their image.
-
-Change the name of the author and his occupation.
-
-There is a validation method
-
-GitHub Pages: https://alsudar.github.io/Project-with-place-cards/
+Перевести файлы стилей в один файл
+Прорефакторить js
+Перевести js в classes
+Добавить ts
+Добавить express (nodemon)
+Добавить jest (клик по картинке, клик по лайку, удаление карточки, закрытие popUp с карточкой, изменение информации об авторе, добавление новой карточки)
+Перевести файлы стилей в scss
