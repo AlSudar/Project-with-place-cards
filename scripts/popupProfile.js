@@ -1,166 +1,72 @@
-const popup = document.querySelector('.popup');
-const popupContent = document.querySelector('.popup__content');
-const popupForm = document.querySelector('.popup__form');
-const userInfoName = document.querySelector('.user-info__name');
-const userInfoJob = document.querySelector('.user-info__job');
-const userButtonEdit = document.querySelector('.user-info__edit');
+import { Popup } from "./popup.js";
 
+const userName = document.querySelector(".user-info__name");
+const userAbout = document.querySelector(".user-info__job");
+const userButtonEdit = document.querySelector(".user-info__edit");
 
-const profileAuthor = {
-    authorName: 'Jaques Causteau',
-    jobAuthor: 'Sailor, Researcher',
-}
-userInfoName.textContent = profileAuthor.authorName;
-userInfoJob.textContent = profileAuthor.jobAuthor;
-userButtonEdit.addEventListener('click', function(event) {
-    popup.classList.add("popup_is-opened");
-});
+userName.textContent = "Jaques Causteau";
+userAbout.textContent = "Sailor, Researcher";
 
-function popupImgClose(event) {
-    const popupClose = document.createElement('img');
-    popupClose.classList.add('popup__close');
-    popupClose.setAttribute('src', './images/close.svg');
-    popupContent.appendChild(popupClose);
-    return popupClose;
-};
+const editUserInfo = () => {
+  const popupEditInfo = document.querySelector(".popup__form");
+  const editUserInfo = popupEditInfo.querySelector(".popup__button");
+  const editUserName = popupEditInfo.querySelector(".popup__input_type_name");
+  const editUserAbout = popupEditInfo.querySelector(
+    ".popup__input_type_link-url"
+  );
+  const inputErrorName = popupEditInfo.querySelector(
+    ".popup__input-error-name"
+  );
+  const inputErrorAbout = popupEditInfo.querySelector(
+    ".popup__input-error-about"
+  );
 
-function popupButtonSave(event) {
-    const popupButton = document.createElement('button');
-    popupButton.classList.add('popup__button_is-active');
-    popupButton.textContent = 'Сохранить';
-    popupForm.appendChild(popupButton);
-    return popupButton;
-};
+  editUserName.setAttribute("value", `${userName.textContent}`);
+  editUserAbout.setAttribute("value", `${userAbout.textContent}`);
 
-function popupInputName() {
-    const popupInputTypeName = document.createElement('input');
-    popupInputTypeName.classList.add('popup__input_type_name', 'popup__input');
-    popupInputTypeName.setAttribute('value', profileAuthor.authorName);
-    popupInputTypeName.setAttribute('placeholder', 'Имя');
-    popupInputTypeName.setAttribute('minLength', 2);
-    popupInputTypeName.setAttribute('id', 'name');
-    popupInputTypeName.setAttribute('minLength', 2);
-    popupInputTypeName.setAttribute('maxLength', '30');
-    popupInputTypeName.setAttribute('required', true);
-    popupForm.appendChild(popupInputTypeName);
-    return popupInputTypeName;
-}
+  editUserName.addEventListener("input", () => {
+    if (editUserName.value.length > 1 && editUserName.value.length < 30) {
+      inputErrorName.classList.remove("popup__input-error_active");
+      editUserInfo.removeAttribute("disabled");
+    } else {
+      inputErrorName.classList.add("popup__input-error_active");
+      editUserName.value.length === 0
+        ? (inputErrorName.textContent = "Поле обязательно для заполнения")
+        : (inputErrorName.textContent =
+            "Количество символов должно быть не меньше 2, и не больше 30");
+      editUserInfo.setAttribute("disabled", "true");
+    }
+  });
 
-function popupInputLink() {
-    const popupInputTypeLinkUrl = document.createElement('input');
-    popupInputTypeLinkUrl.classList.add('popup__input_type_link-url', 'popup__input');
-    popupInputTypeLinkUrl.setAttribute('value', profileAuthor.jobAuthor);
-    popupInputTypeLinkUrl.setAttribute('placeholder', 'О себе');
-    popupInputTypeLinkUrl.setAttribute('minLength', 2);
-    popupInputTypeLinkUrl.setAttribute('id', 'link');
-    popupInputTypeLinkUrl.setAttribute('required', true);
-    popupInputTypeLinkUrl.setAttribute('maxLength', '30');
-    popupForm.appendChild(popupInputTypeLinkUrl);
-    return popupInputTypeLinkUrl;
-}
-//редактирование профиля
-function removeProfile(event) {
+  editUserAbout.addEventListener("input", () => {
+    if (editUserAbout.value.length > 1 && editUserAbout.value.length < 30) {
+      inputErrorAbout.classList.remove("popup__input-error_active");
+      editUserInfo.removeAttribute("disabled");
+    } else {
+      inputErrorAbout.classList.add("popup__input-error_active");
+      editUserAbout.value.length === 0
+        ? (inputErrorAbout.textContent = "Поле обязательно для заполнения")
+        : (inputErrorAbout.textContent =
+            "Количество символов должно быть не меньше 2, и не больше 30");
+      editUserInfo.setAttribute("disabled", "true");
+    }
+  });
+
+  editUserInfo.addEventListener("click", (event) => {
     event.preventDefault();
-    popup.classList.remove("popup_is-opened");
-    userInfoName.textContent = popupInputTypeName.value;
-    userInfoJob.textContent = popupInputTypeLinkUrl.value;
+    userName.textContent = editUserName.value;
+    userAbout.textContent = editUserAbout.value;
+    document.querySelector(".popup").classList.remove("popup_is-opened");
+  });
 };
+// по клику на элемент генерируем html, в html передаём параметры
+let popupUserInfoEdit = `<form class="popup__form" name="profile">
+  <h3 class="popup__title">Редактирование профиля</h3>
+  <input class="popup__input_type_name popup__input" minLength="2" maxLength="30" value='${userName.textContent}' type="text" required="required" placeholder="Имя" />
+  <span class="popup__input-error popup__input-error-name"></span>
+  <input class="popup__input_type_link-url popup__input" minLength="2" maxLength="30"  value='${userAbout.textContent}' type="text" required="required" placeholder="О себе" />
+  <span class="popup__input-error popup__input-error-about"></span>
+  <button class="popup__button" disabled="true">Редактировать</button>
+  </form>`;
 
-popup.addEventListener('submit', removeProfile);
-//закрывает попап по клику на крестик
-function forPopupClose(event) {
-    popup.classList.remove("popup_is-opened");
-};
-
-//Валидация
-for (let i = 0; i < popupForm.length; i++) {
-    popupForm[i].setAttribute('novalidate', true);
-}
-// Validate the field
-let hasError = function(field) {
-    let validity = field.validity;
-    // Don't validate submits, buttons, file and reset inputs, and disabled fields
-    if (field.disabled || field.type === 'file' || field.type === 'reset' || field.type === 'submit' || field.type === 'button') return;
-    // Get validity
-    // если всё верно вернёт null
-    if (validity.valid) return;
-    // If field is required and empty
-    if (validity.valueMissing) { popupButton.setAttribute("disabled", "true");
-        popupButton.classList.add('popup__button'); return 'Это поле обязательно для заполнения' };
-    // If too short
-    if (validity.tooShort) { popupButton.setAttribute("disabled", "true");
-        popupButton.classList.add('popup__button'); return 'Должно быть от ' + field.getAttribute('minLength') + ' до 30 символов' };
-    // If too long
-    if (validity.tooLong) { popupButton.setAttribute("disabled", "true");
-        popupButton.classList.add('popup__button'); return 'Должно быть от 2 до ' + field.getAttribute('maxLength') + ' символов' };
-
-};
-
-let showError = function(field, error) {
-    // Add error class to field
-    field.classList.add('error');
-    // Get field id or name
-    let id = field.id || field.name;
-    if (!id) return;
-    // Check if error message field already exists
-    // If not, create one
-    let message = field.form.querySelector('.popup__content_error#error-for-' + id);
-    if (!message) {
-        message = document.createElement('span');
-        message.className = 'popup__content_error';
-        message.id = 'error-for-' + id;
-        field.parentNode.insertBefore(message, field.nextSibling);
-    }
-    field.setAttribute('aria-describedby', 'error-for-' + id);
-    // Update error message
-    message.innerHTML = error;
-    // Show error message
-    message.style.display = 'block';
-    message.style.visibility = 'visible';
-};
-let removeError = function(field) {
-    // Remove error class to field
-    field.classList.remove('error');
-    // Remove ARIA role from the field
-    field.removeAttribute('aria-describedby');
-    // Get field id or name
-    let id = field.id || field.name;
-    if (!id) return;
-    // Check if an error message is in the DOM
-    let message = field.form.querySelector('.popup__content_error#error-for-' + id + '');
-    if (!message) return;
-    // If so, hide it
-    message.innerHTML = '';
-    message.style.display = 'none';
-    message.style.visibility = 'hidden';
-    popupButton.removeAttribute("disabled");
-    popupButton.classList.remove('popup__button');
-};
-// Listen to all blur events
-document.addEventListener('input', function(event) {
-    // Only run if the field is in a form to be validated
-    if (!event.target.form.classList.contains('popup__form')) return;
-    // Validate the field
-    let error = hasError(event.target);
-    // If there's an error, show it
-    if (error) {
-        showError(event.target, error);
-        return;
-    }
-    removeError(event.target);
-}, true);
-
-root.addEventListener('click', function(event) {
-    if (event.target == popupMesto || event.target == popup) {
-        popupMesto.classList.remove("popup_is-opened");
-        popup.classList.remove("popup_is-opened");
-    }
-});
-
-
-
-const popupClose = popupImgClose();
-const popupInputTypeName = popupInputName();
-const popupInputTypeLinkUrl = popupInputLink();
-const popupButton = popupButtonSave();
-popupClose.addEventListener('click', forPopupClose);
+Popup(userButtonEdit, popupUserInfoEdit, editUserInfo);
