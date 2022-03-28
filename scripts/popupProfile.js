@@ -1,4 +1,5 @@
-import { Popup } from "./popup.js";
+import { Popup } from "../utils/popup.js";
+// import { Fetch } from "../utils/fetch.js";
 
 const userName = document.querySelector(".user-info__name");
 const userAbout = document.querySelector(".user-info__job");
@@ -20,6 +21,7 @@ const editUserInfo = () => {
   const inputErrorAbout = popupEditInfo.querySelector(
     ".popup__input-error-about"
   );
+  // const formData = new FormData(document.forms.profile);
 
   editUserName.setAttribute("value", `${userName.textContent}`);
   editUserAbout.setAttribute("value", `${userAbout.textContent}`);
@@ -57,9 +59,14 @@ const editUserInfo = () => {
     userName.textContent = editUserName.value;
     userAbout.textContent = editUserAbout.value;
     document.querySelector(".popup").classList.remove("popup_is-opened");
+    // const fetch = new Fetch(
+    //   "POST",
+    //   "https://reqbin.com/echo/post/json",
+    //   formData
+    // ).response();
   });
 };
-// по клику на элемент генерируем html, в html передаём параметры
+
 let popupUserInfoEdit = `<form class="popup__form" name="profile">
   <h3 class="popup__title">Редактирование профиля</h3>
   <input class="popup__input_type_name popup__input" minLength="2" maxLength="30" value='${userName.textContent}' type="text" required="required" placeholder="Имя" />

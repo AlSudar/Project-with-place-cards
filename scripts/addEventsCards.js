@@ -1,4 +1,4 @@
-import { Popup } from "./popup.js";
+import { Popup } from "../utils/popup.js";
 const plasecList = document.querySelector(".places-list");
 
 export const addEventsCards = () => {
@@ -24,8 +24,6 @@ export const addEventsCards = () => {
       "alt"
     )} src=${item.getAttribute("src")} />`;
 
-    Popup(item, popupImage, () => {
-      return;
-    });
+    Popup(item, popupImage, () => {});
   });
 };
