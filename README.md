@@ -1,3 +1,1 @@
-Добавить возможность менять аватарку <br />
-
-Перевести функционал на Class <br />
+https://project-with-place-cards.vercel.app/
